@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['sttc4_5fcmd_5fdisable_5ftesting_5fmode',['STTC4_CMD_DISABLE_TESTING_MODE',['../_adafruit___s_t_t_c4_8h.html#a1500e6a744fb2eed7243b0b9bfe3314d',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fenable_5ftesting_5fmode',['STTC4_CMD_ENABLE_TESTING_MODE',['../_adafruit___s_t_t_c4_8h.html#a75bfd0fd08a42471b40e43d861c8fd8a',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fenter_5fsleep_5fmode',['STTC4_CMD_ENTER_SLEEP_MODE',['../_adafruit___s_t_t_c4_8h.html#a441baf5855f7bcbaa5e289215c567eaa',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fexit_5fsleep_5fmode',['STTC4_CMD_EXIT_SLEEP_MODE',['../_adafruit___s_t_t_c4_8h.html#a159f63fb5b1931d64718c9ff8621ec2f',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fget_5fproduct_5fid',['STTC4_CMD_GET_PRODUCT_ID',['../_adafruit___s_t_t_c4_8h.html#af7d77174d267df6b6ba7f324597b1283',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fmeasure_5fsingle_5fshot',['STTC4_CMD_MEASURE_SINGLE_SHOT',['../_adafruit___s_t_t_c4_8h.html#a2f33b35555c4214efd16cd08608059b1',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fperform_5fconditioning',['STTC4_CMD_PERFORM_CONDITIONING',['../_adafruit___s_t_t_c4_8h.html#aa365d214cad6ea1722c6766e884fa13e',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fperform_5ffactory_5freset',['STTC4_CMD_PERFORM_FACTORY_RESET',['../_adafruit___s_t_t_c4_8h.html#ae217df97d2ebf98e434428b040a50172',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fperform_5fforced_5frecalibration',['STTC4_CMD_PERFORM_FORCED_RECALIBRATION',['../_adafruit___s_t_t_c4_8h.html#a3f35221a4bbb21f9b6edb65583fffafb',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fperform_5fself_5ftest',['STTC4_CMD_PERFORM_SELF_TEST',['../_adafruit___s_t_t_c4_8h.html#a4ba2a89d454abe25d2d60c8a3a49598f',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fperform_5fsoft_5freset',['STTC4_CMD_PERFORM_SOFT_RESET',['../_adafruit___s_t_t_c4_8h.html#a0140fc6cc868724db90ed3aea5083b42',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fread_5fmeasurement',['STTC4_CMD_READ_MEASUREMENT',['../_adafruit___s_t_t_c4_8h.html#a81494a4f9dac0b5dbd56042ace4bcce8',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fset_5fpressure_5fcompensation',['STTC4_CMD_SET_PRESSURE_COMPENSATION',['../_adafruit___s_t_t_c4_8h.html#abf910340151ebb168ec0f87c739baf3f',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fset_5frht_5fcompensation',['STTC4_CMD_SET_RHT_COMPENSATION',['../_adafruit___s_t_t_c4_8h.html#ada529727f8bfb61c3c319a0e85ca9efe',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fstart_5fcontinuous_5fmeasurement',['STTC4_CMD_START_CONTINUOUS_MEASUREMENT',['../_adafruit___s_t_t_c4_8h.html#af5b879d5733d0e6bd4bf505865c6c3e0',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fcmd_5fstop_5fcontinuous_5fmeasurement',['STTC4_CMD_STOP_CONTINUOUS_MEASUREMENT',['../_adafruit___s_t_t_c4_8h.html#a4279a7a912beffc42d49cb3bd8275709',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fdefault_5faddr',['STTC4_DEFAULT_ADDR',['../_adafruit___s_t_t_c4_8h.html#ae48555ac43163c6adf12cd77bebe6beb',1,'Adafruit_STTC4.h']]],
+  ['sttc4_5fproduct_5fid',['STTC4_PRODUCT_ID',['../_adafruit___s_t_t_c4_8h.html#a8f5fc040ba4d659b1c12092aa877d78f',1,'Adafruit_STTC4.h']]]
+];
