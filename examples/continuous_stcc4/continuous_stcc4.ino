@@ -2,7 +2,7 @@
 
 #include <Adafruit_STCC4.h>
 
-Adafruit_STCC4 sttc4;
+Adafruit_STCC4 stcc4;
 
 void printStatus(uint16_t status) {
   Serial.print(F("Status: 0x"));
@@ -47,33 +47,33 @@ void setup() {
 
   Serial.println(F("Adafruit STCC4 test"));
 
-  if (!sttc4.begin()) {
+  if (!stcc4.begin()) {
     Serial.println(F("Failed to find STCC4 chip"));
     while (1) delay(10);
   }
 
   Serial.println(F("STCC4 found!"));
 
-  if (!sttc4.reset()) {
+  if (!stcc4.reset()) {
     Serial.println(F("Failed to reset STCC4"));
     while (1) delay(10);
   }
   Serial.println(F("Reset successful"));
 
   // Test getProductID function after reset
-  uint32_t productID = sttc4.getProductID();
+  uint32_t productID = stcc4.getProductID();
   Serial.print(F("Product ID: 0x"));
   Serial.println(productID, HEX);
 
   // Uncomment to perform factory reset (clears calibration history)
   // Serial.println(F("Performing factory reset..."));
-  // if (sttc4.factoryReset()) {
+  // if (stcc4.factoryReset()) {
   //   Serial.println(F("Factory reset complete"));
   // } else {
   //   Serial.println(F("Factory reset failed"));
   // }
 
-  if (!sttc4.enableContinuousMeasurement(true)) {
+  if (!stcc4.enableContinuousMeasurement(true)) {
     Serial.println(F("Failed to start continuous measurement"));
     while (1) delay(10);
   }
@@ -81,7 +81,7 @@ void setup() {
 
   // Uncomment to perform conditioning (takes 22 seconds)
   // Serial.println(F("Performing conditioning..."));
-  // if (sttc4.performConditioning()) {
+  // if (stcc4.performConditioning()) {
   //   Serial.println(F("Conditioning complete"));
   // } else {
   //   Serial.println(F("Conditioning failed"));
@@ -93,7 +93,7 @@ void loop() {
   float temperature, humidity;
   uint16_t status;
 
-  if (sttc4.readMeasurement(&co2, &temperature, &humidity, &status)) {
+  if (stcc4.readMeasurement(&co2, &temperature, &humidity, &status)) {
     Serial.print(F("CO2: "));
     Serial.print(co2);
     Serial.print(F(" ppm, Temp: "));

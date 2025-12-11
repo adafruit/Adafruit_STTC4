@@ -3,7 +3,7 @@
 
 #include <Adafruit_STCC4.h>
 
-Adafruit_STCC4 sttc4;
+Adafruit_STCC4 stcc4;
 
 void printSelfTestResult(uint16_t result) {
   Serial.print(F("Self-test result: 0x"));
@@ -47,7 +47,7 @@ void setup() {
 
   Serial.println(F("Adafruit STCC4 Self Test"));
 
-  if (!sttc4.begin()) {
+  if (!stcc4.begin()) {
     Serial.println(F("Failed to find STCC4 chip"));
     while (1) delay(10);
   }
@@ -55,13 +55,13 @@ void setup() {
   Serial.println(F("STCC4 found!"));
 
   // Get product ID
-  uint32_t productID = sttc4.getProductID();
+  uint32_t productID = stcc4.getProductID();
   Serial.print(F("Product ID: 0x"));
   Serial.println(productID, HEX);
 
   // Perform factory reset
   Serial.println(F("Performing factory reset..."));
-  if (!sttc4.factoryReset()) {
+  if (!stcc4.factoryReset()) {
     Serial.println(F("Factory reset failed"));
     while (1) delay(10);
   }
@@ -69,7 +69,7 @@ void setup() {
 
   // Perform conditioning
   Serial.println(F("Performing conditioning (22 seconds)..."));
-  if (!sttc4.performConditioning()) {
+  if (!stcc4.performConditioning()) {
     Serial.println(F("Conditioning failed"));
     while (1) delay(10);
   }
@@ -78,7 +78,7 @@ void setup() {
   // Perform self test
   Serial.println(F("Performing self test..."));
   uint16_t selfTestResult;
-  if (!sttc4.performSelfTest(&selfTestResult)) {
+  if (!stcc4.performSelfTest(&selfTestResult)) {
     Serial.println(F("Self test failed to execute"));
     while (1) delay(10);
   }
