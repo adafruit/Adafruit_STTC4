@@ -1,9 +1,9 @@
-// Self test example for Adafruit STTC4 CO2 sensor
+// Self test example for Adafruit STCC4 CO2 sensor
 // Performs factory reset, conditioning, and self test
 
-#include <Adafruit_STTC4.h>
+#include <Adafruit_STCC4.h>
 
-Adafruit_STTC4 sttc4;
+Adafruit_STCC4 sttc4;
 
 void printSelfTestResult(uint16_t result) {
   Serial.print(F("Self-test result: 0x"));
@@ -18,22 +18,22 @@ void printSelfTestResult(uint16_t result) {
   Serial.print(F("FAIL - "));
   bool first = true;
   
-  if (result & STTC4_STATUS_VOLTAGE_ERROR) {
+  if (result & STCC4_STATUS_VOLTAGE_ERROR) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("VOLTAGE_ERROR"));
     first = false;
   }
-  if (result & STTC4_STATUS_DEBUG_MASK) {
+  if (result & STCC4_STATUS_DEBUG_MASK) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("DEBUG"));
     first = false;
   }
-  if (result & STTC4_STATUS_SHT_NOT_CONNECTED) {
+  if (result & STCC4_STATUS_SHT_NOT_CONNECTED) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("SHT_NOT_CONNECTED"));
     first = false;
   }
-  if (result & STTC4_STATUS_MEMORY_ERROR_MASK) {
+  if (result & STCC4_STATUS_MEMORY_ERROR_MASK) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("MEMORY_ERROR"));
     first = false;
@@ -45,14 +45,14 @@ void setup() {
   Serial.begin(115200);
   while (!Serial) delay(10);
 
-  Serial.println(F("Adafruit STTC4 Self Test"));
+  Serial.println(F("Adafruit STCC4 Self Test"));
 
   if (!sttc4.begin()) {
-    Serial.println(F("Failed to find STTC4 chip"));
+    Serial.println(F("Failed to find STCC4 chip"));
     while (1) delay(10);
   }
 
-  Serial.println(F("STTC4 found!"));
+  Serial.println(F("STCC4 found!"));
 
   // Get product ID
   uint32_t productID = sttc4.getProductID();

@@ -1,13 +1,13 @@
 /*!
- * @file Adafruit_STTC4.cpp
+ * @file Adafruit_STCC4.cpp
  *
- * @mainpage Adafruit STTC4 CO2 sensor driver
+ * @mainpage Adafruit STCC4 CO2 sensor driver
  *
  * @section intro_sec Introduction
  *
- * This is the documentation for Adafruit's STTC4 driver for the
+ * This is the documentation for Adafruit's STCC4 driver for the
  * Arduino platform. It is designed specifically to work with the
- * Adafruit STTC4 breakout: https://www.adafruit.com/product/xxxx
+ * Adafruit STCC4 breakout: https://www.adafruit.com/product/xxxx
  *
  * These sensors use I2C to communicate, 2 pins (SCL+SDA) are required
  * to interface with the breakout.
@@ -27,31 +27,31 @@
  *
  */
 
-#include "Adafruit_STTC4.h"
+#include "Adafruit_STCC4.h"
 
 /*!
- * @brief Instantiates a new STTC4 class
+ * @brief Instantiates a new STCC4 class
  */
-Adafruit_STTC4::Adafruit_STTC4() {
+Adafruit_STCC4::Adafruit_STCC4() {
   i2c_dev = nullptr;
 }
 
 /*!
- * @brief Destructor for STTC4 class
+ * @brief Destructor for STCC4 class
  */
-Adafruit_STTC4::~Adafruit_STTC4() {
+Adafruit_STCC4::~Adafruit_STCC4() {
   if (i2c_dev) {
     delete i2c_dev;
   }
 }
 
 /*!
- * @brief Initializes the STTC4 sensor
+ * @brief Initializes the STCC4 sensor
  * @param i2c_addr The I2C address of the sensor (default 0x64)
  * @param wire The Wire object to use for I2C communication (default &Wire)
  * @return true if initialization was successful, false otherwise
  */
-bool Adafruit_STTC4::begin(uint8_t i2c_addr, TwoWire* wire) {
+bool Adafruit_STCC4::begin(uint8_t i2c_addr, TwoWire* wire) {
   if (i2c_dev) {
     delete i2c_dev;
   }
@@ -67,7 +67,7 @@ bool Adafruit_STTC4::begin(uint8_t i2c_addr, TwoWire* wire) {
 
   // Verify product ID using helper function
   uint32_t product_id = getProductID();
-  if (product_id != STTC4_PRODUCT_ID) {
+  if (product_id != STCC4_PRODUCT_ID) {
     return false;
   }
 
@@ -75,12 +75,12 @@ bool Adafruit_STTC4::begin(uint8_t i2c_addr, TwoWire* wire) {
 }
 
 /*!
- * @brief Calculate CRC-8 checksum for STTC4 data
+ * @brief Calculate CRC-8 checksum for STCC4 data
  * @param data Pointer to data bytes
  * @param len Number of bytes to calculate CRC for
  * @return CRC-8 checksum
  */
-uint8_t Adafruit_STTC4::crc8(const uint8_t* data, uint8_t len) {
+uint8_t Adafruit_STCC4::crc8(const uint8_t* data, uint8_t len) {
   uint8_t crc = 0xFF;
   for (uint8_t i = 0; i < len; i++) {
     crc ^= data[i];
@@ -99,9 +99,9 @@ uint8_t Adafruit_STTC4::crc8(const uint8_t* data, uint8_t len) {
  * @brief Perform soft reset of the sensor
  * @return true if reset was successful, false otherwise
  */
-bool Adafruit_STTC4::reset() {
+bool Adafruit_STCC4::reset() {
   uint8_t reset_addr = 0x00;
-  uint8_t reset_cmd = STTC4_CMD_PERFORM_SOFT_RESET;
+  uint8_t reset_cmd = STCC4_CMD_PERFORM_SOFT_RESET;
 
   if (!i2c_dev->write(&reset_cmd, 1, true, &reset_addr)) {
     return false;
@@ -116,16 +116,16 @@ bool Adafruit_STTC4::reset() {
  * @param enable true to enter sleep mode, false to exit sleep mode
  * @return true if operation was successful, false otherwise
  */
-bool Adafruit_STTC4::sleepMode(bool enable) {
+bool Adafruit_STCC4::sleepMode(bool enable) {
   if (enable) {
     // Enter sleep mode
-    if (!writeCommand(STTC4_CMD_ENTER_SLEEP_MODE)) {
+    if (!writeCommand(STCC4_CMD_ENTER_SLEEP_MODE)) {
       return false;
     }
     delay(1); // Wait for sleep command execution (1ms per datasheet)
   } else {
     // Exit sleep mode
-    uint8_t wake_byte = STTC4_CMD_EXIT_SLEEP_MODE;
+    uint8_t wake_byte = STCC4_CMD_EXIT_SLEEP_MODE;
     if (!i2c_dev->write(&wake_byte, 1)) {
       return false;
     }
@@ -139,11 +139,11 @@ bool Adafruit_STTC4::sleepMode(bool enable) {
  * @param enable true to start continuous measurement, false to stop
  * @return true if command was sent successfully, false otherwise
  */
-bool Adafruit_STTC4::enableContinuousMeasurement(bool enable) {
+bool Adafruit_STCC4::enableContinuousMeasurement(bool enable) {
   if (enable) {
-    return writeCommand(STTC4_CMD_START_CONTINUOUS_MEASUREMENT);
+    return writeCommand(STCC4_CMD_START_CONTINUOUS_MEASUREMENT);
   } else {
-    return writeCommand(STTC4_CMD_STOP_CONTINUOUS_MEASUREMENT);
+    return writeCommand(STCC4_CMD_STOP_CONTINUOUS_MEASUREMENT);
   }
 }
 
@@ -151,16 +151,16 @@ bool Adafruit_STTC4::enableContinuousMeasurement(bool enable) {
  * @brief Perform single shot measurement
  * @return true if command was sent successfully, false otherwise
  */
-bool Adafruit_STTC4::measureSingleShot() {
-  return writeCommand(STTC4_CMD_MEASURE_SINGLE_SHOT);
+bool Adafruit_STCC4::measureSingleShot() {
+  return writeCommand(STCC4_CMD_MEASURE_SINGLE_SHOT);
 }
 
 /*!
  * @brief Perform sensor conditioning to improve initial CO2 sensing performance
  * @return true if command was sent successfully, false otherwise
  */
-bool Adafruit_STTC4::performConditioning() {
-  if (!writeCommand(STTC4_CMD_PERFORM_CONDITIONING)) {
+bool Adafruit_STCC4::performConditioning() {
+  if (!writeCommand(STCC4_CMD_PERFORM_CONDITIONING)) {
     return false;
   }
   delay(22000); // Wait 22 seconds for conditioning to complete
@@ -171,8 +171,8 @@ bool Adafruit_STTC4::performConditioning() {
  * @brief Perform factory reset to clear FRC and ASC algorithm history
  * @return true if command was sent successfully, false otherwise
  */
-bool Adafruit_STTC4::factoryReset() {
-  if (!writeCommand(STTC4_CMD_PERFORM_FACTORY_RESET)) {
+bool Adafruit_STCC4::factoryReset() {
+  if (!writeCommand(STCC4_CMD_PERFORM_FACTORY_RESET)) {
     return false;
   }
   delay(90); // Wait 90ms for factory reset to complete
@@ -184,9 +184,9 @@ bool Adafruit_STTC4::factoryReset() {
  * @param result Pointer to store self-test result
  * @return true if self-test was performed successfully, false otherwise
  */
-bool Adafruit_STTC4::performSelfTest(uint16_t* result) {
-  uint8_t cmd[2] = {(uint8_t)(STTC4_CMD_PERFORM_SELF_TEST >> 8),
-                    (uint8_t)(STTC4_CMD_PERFORM_SELF_TEST & 0xFF)};
+bool Adafruit_STCC4::performSelfTest(uint16_t* result) {
+  uint8_t cmd[2] = {(uint8_t)(STCC4_CMD_PERFORM_SELF_TEST >> 8),
+                    (uint8_t)(STCC4_CMD_PERFORM_SELF_TEST & 0xFF)};
   uint8_t data[3]; // 2 bytes + 1 CRC
 
   if (!i2c_dev->write(cmd, 2)) {
@@ -213,7 +213,7 @@ bool Adafruit_STTC4::performSelfTest(uint16_t* result) {
  * @param command 16-bit command code
  * @return true if command was sent successfully, false otherwise
  */
-bool Adafruit_STTC4::writeCommand(uint16_t command) {
+bool Adafruit_STCC4::writeCommand(uint16_t command) {
   uint8_t cmd[2] = {(uint8_t)(command >> 8), (uint8_t)(command & 0xFF)};
   return i2c_dev->write(cmd, 2);
 }
@@ -225,7 +225,7 @@ bool Adafruit_STTC4::writeCommand(uint16_t command) {
  * @param len Expected response length in bytes
  * @return true if read successful and CRC valid, false otherwise
  */
-bool Adafruit_STTC4::readCommand(uint16_t command, uint8_t* data, uint8_t len) {
+bool Adafruit_STCC4::readCommand(uint16_t command, uint8_t* data, uint8_t len) {
   uint8_t cmd[2] = {(uint8_t)(command >> 8), (uint8_t)(command & 0xFF)};
 
   if (!i2c_dev->write_then_read(cmd, 2, data, len, true)) {
@@ -250,11 +250,11 @@ bool Adafruit_STTC4::readCommand(uint16_t command, uint8_t* data, uint8_t len) {
  * @param status Pointer to store sensor status word
  * @return true if measurement was read successfully, false otherwise
  */
-bool Adafruit_STTC4::readMeasurement(uint16_t* co2, float* temperature,
+bool Adafruit_STCC4::readMeasurement(uint16_t* co2, float* temperature,
                                      float* humidity, uint16_t* status) {
   uint8_t data[12]; // 4 x (2 bytes + 1 CRC)
 
-  if (!readCommand(STTC4_CMD_READ_MEASUREMENT, data, 12)) {
+  if (!readCommand(STCC4_CMD_READ_MEASUREMENT, data, 12)) {
     return false;
   }
 
@@ -277,10 +277,10 @@ bool Adafruit_STTC4::readMeasurement(uint16_t* co2, float* temperature,
  * @brief Get the product ID from the sensor
  * @return 32-bit product ID, or 0 if read failed
  */
-uint32_t Adafruit_STTC4::getProductID() {
+uint32_t Adafruit_STCC4::getProductID() {
   uint8_t data[6]; // First 2 words only (2 bytes + CRC each)
 
-  if (!readCommand(STTC4_CMD_GET_PRODUCT_ID, data, 6)) {
+  if (!readCommand(STCC4_CMD_GET_PRODUCT_ID, data, 6)) {
     return 0; // Return 0 on failure
   }
 

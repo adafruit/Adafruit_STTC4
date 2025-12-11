@@ -1,17 +1,17 @@
-# Adafruit STTC4 Library [![Build Status](https://github.com/adafruit/Adafruit_STTC4/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_STTC4/actions)[![Documentation](https://github.com/adafruit/Adafruit_STTC4/actions/workflows/doxygen.yml/badge.svg)](https://adafruit.github.io/Adafruit_STTC4/html/index.html)
+# Adafruit STCC4 Library [![Build Status](https://github.com/adafruit/Adafruit_STCC4/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_STCC4/actions)[![Documentation](https://github.com/adafruit/Adafruit_STCC4/actions/workflows/doxygen.yml/badge.svg)](https://adafruit.github.io/Adafruit_STCC4/html/index.html)
 
 <a href="https://www.adafruit.com/product/xxxx"><img src="assets/board.jpg?raw=true" width="500px"><br/>
-<em>Adafruit STTC4 CO2 Sensor Breakout</em></a>
+<em>Adafruit STCC4 CO2 Sensor Breakout</em></a>
 
-This is an Arduino library for the Adafruit STTC4 sensor breakout board.
+This is an Arduino library for the Adafruit STCC4 sensor breakout board.
 
-## About the STTC4
+## About the STCC4
 
-The library enables communication with the STTC4 sensor via I2C interface.
+The library enables communication with the STCC4 sensor via I2C interface.
 
 ## Installation
 
-To install, use the Arduino Library Manager and search for "Adafruit STTC4" and install the library.
+To install, use the Arduino Library Manager and search for "Adafruit STCC4" and install the library.
 
 ## Dependencies
 
@@ -20,7 +20,7 @@ This library depends on:
 
 ## Contributing
 
-Contributions are welcome! Please read our [Code of Conduct](https://github.com/adafruit/Adafruit_STTC4/blob/main/CODE_OF_CONDUCT.md) before contributing to help this project stay welcoming.
+Contributions are welcome! Please read our [Code of Conduct](https://github.com/adafruit/Adafruit_STCC4/blob/main/CODE_OF_CONDUCT.md) before contributing to help this project stay welcoming.
 
 ### Documentation and doxygen
 

@@ -1,8 +1,8 @@
-// Continuous measurement example for Adafruit STTC4 CO2 sensor
+// Continuous measurement example for Adafruit STCC4 CO2 sensor
 
-#include <Adafruit_STTC4.h>
+#include <Adafruit_STCC4.h>
 
-Adafruit_STTC4 sttc4;
+Adafruit_STCC4 sttc4;
 
 void printStatus(uint16_t status) {
   Serial.print(F("Status: 0x"));
@@ -10,27 +10,27 @@ void printStatus(uint16_t status) {
   Serial.print(F(" ("));
 
   bool first = true;
-  if (status & STTC4_STATUS_VOLTAGE_ERROR) {
+  if (status & STCC4_STATUS_VOLTAGE_ERROR) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("VOLTAGE_ERROR"));
     first = false;
   }
-  if (status & STTC4_STATUS_DEBUG_MASK) {
+  if (status & STCC4_STATUS_DEBUG_MASK) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("DEBUG"));
     first = false;
   }
-  if (status & STTC4_STATUS_SHT_NOT_CONNECTED) {
+  if (status & STCC4_STATUS_SHT_NOT_CONNECTED) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("SHT_NOT_CONNECTED"));
     first = false;
   }
-  if (status & STTC4_STATUS_MEMORY_ERROR_MASK) {
+  if (status & STCC4_STATUS_MEMORY_ERROR_MASK) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("MEMORY_ERROR"));
     first = false;
   }
-  if (status & STTC4_STATUS_TESTING_MODE) {
+  if (status & STCC4_STATUS_TESTING_MODE) {
     if (!first) Serial.print(F(", "));
     Serial.print(F("TESTING_MODE"));
     first = false;
@@ -45,17 +45,17 @@ void setup() {
   Serial.begin(115200);
   while (!Serial) delay(10);
 
-  Serial.println(F("Adafruit STTC4 test"));
+  Serial.println(F("Adafruit STCC4 test"));
 
   if (!sttc4.begin()) {
-    Serial.println(F("Failed to find STTC4 chip"));
+    Serial.println(F("Failed to find STCC4 chip"));
     while (1) delay(10);
   }
 
-  Serial.println(F("STTC4 found!"));
+  Serial.println(F("STCC4 found!"));
 
   if (!sttc4.reset()) {
-    Serial.println(F("Failed to reset STTC4"));
+    Serial.println(F("Failed to reset STCC4"));
     while (1) delay(10);
   }
   Serial.println(F("Reset successful"));
